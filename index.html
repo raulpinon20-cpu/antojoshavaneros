@@ -1,48 +1,112 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Antojos Habaneros — Menú</title>
-  <style>
-    :root { --bg:#0b0b0c; --card:#111114; --text:#f2f2f3; --muted:#b9b9bf; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); }
-    header { padding:18px 14px; position:sticky; top:0; background:linear-gradient(180deg, rgba(11,11,12,.98), rgba(11,11,12,.75)); backdrop-filter: blur(6px); border-bottom:1px solid rgba(255,255,255,.06); }
-    .wrap { max-width: 980px; margin: 0 auto; }
-    h1 { font-size: 20px; margin:0; letter-spacing:.2px; }
-    .sub { font-size: 13px; color:var(--muted); margin-top:4px; }
-    main { padding: 12px 10px 24px; }
-    .imgcard { background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius: 14px; overflow:hidden; margin: 12px 0; }
-    .imgcard img { display:block; width:100%; height:auto; }
-    .note { font-size: 12px; color:var(--muted); padding: 10px 12px; border-top:1px solid rgba(255,255,255,.06); }
-    footer { padding: 18px 14px 30px; color:var(--muted); font-size: 12px; }
-    a { color: #8ab4ff; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Antojos Habaneros — Menú</title>
+
+<style>
+:root{
+  --bg:#0b0b0c;
+  --card:#15161a;
+  --txt:#ffffff;
+  --muted:#9aa0a6;
+  --accent:#25d366;
+}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
+  background:var(--bg);
+  color:var(--txt);
+}
+
+header{
+  background:#000;
+  padding:16px;
+  text-align:center;
+}
+
+h1{margin:0;font-size:22px;}
+.sub{color:var(--muted);font-size:13px;margin-top:4px;}
+
+.links{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  padding:12px;
+}
+
+.links a{
+  text-decoration:none;
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:14px;
+  background:#1c1c1c;
+  color:#fff;
+}
+
+.wa{background:var(--accent);color:#000;}
+
+main{
+  max-width:900px;
+  margin:auto;
+  padding:12px;
+}
+
+.imgcard{
+  background:var(--card);
+  margin-bottom:14px;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.imgcard img{
+  width:100%;
+  display:block;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
+  font-size:13px;
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="wrap">
-      <h1>Antojos Habaneros — Menú</h1>
-      <div class="sub">Imágenes en orden (como el PDF). Desliza hacia abajo.</div>
-    </div>
-  </header>
 
-  <main class="wrap">
-    <div class="imgcard"><img src="images/page-01.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
-    <div class="imgcard"><img src="images/page-02.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
-    <div class="imgcard"><img src="images/page-03.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
-    <div class="imgcard"><img src="images/page-04.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
-    <div class="imgcard"><img src="images/page-05.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
-    <div class="imgcard"><img src="images/page-06.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
-    <div class="imgcard"><img src="images/page-07.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
-    <div class="imgcard"><img src="images/page-08.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
-    <div class="imgcard"><img src="images/page-09.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
-    <div class="imgcard"><img src="images/page-10.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+<header>
+<h1>Antojos Habaneros — Menú</h1>
+<div class="sub">Desliza para ver todo el menú</div>
 
-  </main>
+<div class="links">
+<a class="wa" href="https://wa.me/19087680702" target="_blank">WhatsApp</a>
+<a href="https://www.instagram.com/antojos_havaneros" target="_blank">Instagram</a>
+<a href="https://www.tiktok.com/@antojoshavaneros" target="_blank">TikTok</a>
+</div>
+</header>
 
-  <footer class="wrap">
-    © 2026 Antojos Habaneros
-  </footer>
+<main>
+
+<div class="imgcard"><img src="page-01.webp"></div>
+<div class="imgcard"><img src="page-02.webp"></div>
+<div class="imgcard"><img src="page-03.webp"></div>
+<div class="imgcard"><img src="page-04.webp"></div>
+<div class="imgcard"><img src="page-05.webp"></div>
+<div class="imgcard"><img src="page-06.webp"></div>
+<div class="imgcard"><img src="page-07.webp"></div>
+<div class="imgcard"><img src="page-08.webp"></div>
+<div class="imgcard"><img src="page-09.webp"></div>
+<div class="imgcard"><img src="page-10.webp"></div>
+
+</main>
+
+<footer>
+© 2026 Antojos Habaneros
+</footer>
+
 </body>
 </html>
