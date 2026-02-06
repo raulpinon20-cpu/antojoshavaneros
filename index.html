@@ -1,129 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Antojos Havaneros | Repostería en NJ</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Antojos Habaneros — Menú</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8f9fa;
-      color: #222;
-    }
-
-    header {
-      background: linear-gradient(90deg,#0b3c91,#c1121f);
-      color: white;
-      text-align: center;
-      padding: 30px 15px;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 32px;
-    }
-
-    header p {
-      margin: 8px 0;
-      font-size: 16px;
-    }
-
-    .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 22px;
-      background: white;
-      color: #0b3c91;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: bold;
-    }
-
-    .btn:hover {
-      background: #eee;
-    }
-
-    section {
-      padding: 25px 15px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h2 {
-      text-align: center;
-      color: #0b3c91;
-    }
-
-    .menu {
-      background: white;
-      border-radius: 10px;
-      padding: 20px;
-      margin-top: 15px;
-    }
-
-    .menu h3 {
-      border-bottom: 2px solid #c1121f;
-      padding-bottom: 5px;
-      color: #c1121f;
-    }
-
-    .menu p {
-      margin: 6px 0;
-    }
-
-    footer {
-      background: #0b3c91;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
+    :root { --bg:#0b0b0c; --card:#111114; --text:#f2f2f3; --muted:#b9b9bf; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background:var(--bg); color:var(--text); }
+    header { padding:18px 14px; position:sticky; top:0; background:linear-gradient(180deg, rgba(11,11,12,.98), rgba(11,11,12,.75)); backdrop-filter: blur(6px); border-bottom:1px solid rgba(255,255,255,.06); }
+    .wrap { max-width: 980px; margin: 0 auto; }
+    h1 { font-size: 20px; margin:0; letter-spacing:.2px; }
+    .sub { font-size: 13px; color:var(--muted); margin-top:4px; }
+    main { padding: 12px 10px 24px; }
+    .imgcard { background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius: 14px; overflow:hidden; margin: 12px 0; }
+    .imgcard img { display:block; width:100%; height:auto; }
+    .note { font-size: 12px; color:var(--muted); padding: 10px 12px; border-top:1px solid rgba(255,255,255,.06); }
+    footer { padding: 18px 14px 30px; color:var(--muted); font-size: 12px; }
+    a { color: #8ab4ff; }
   </style>
 </head>
-
 <body>
+  <header>
+    <div class="wrap">
+      <h1>Antojos Habaneros — Menú</h1>
+      <div class="sub">Imágenes en orden (como el PDF). Desliza hacia abajo.</div>
+    </div>
+  </header>
 
-<header>
-  <h1>Antojos Havaneros</h1>
-  <p>Panadería y Repostería por Encargo</p>
-  <p>📍 Elizabeth, NJ | ⏰ 9am - 7pm | 📦 Pick Up</p>
+  <main class="wrap">
+    <div class="imgcard"><img src="images/page-01.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+    <div class="imgcard"><img src="images/page-02.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+    <div class="imgcard"><img src="images/page-03.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+    <div class="imgcard"><img src="images/page-04.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+    <div class="imgcard"><img src="images/page-05.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+    <div class="imgcard"><img src="images/page-06.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+    <div class="imgcard"><img src="images/page-07.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+    <div class="imgcard"><img src="images/page-08.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+    <div class="imgcard"><img src="images/page-09.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
+    <div class="imgcard"><img src="images/page-10.webp" alt="Menú — página" loading="lazy" decoding="async" /></div>
 
-  <a class="btn" href="https://wa.me/19087680702" target="_blank">📲 Pedir por WhatsApp</a>
-  <a class="btn" href="https://instagram.com/antojos_havaneros" target="_blank">📸 Instagram</a>
-  <a class="btn" href="https://tiktok.com/@antojoshavaneros" target="_blank">🎵 TikTok</a>
-</header>
+  </main>
 
-<section>
-  <h2>🍰 Nuestro Menú</h2>
-
-  <div class="menu">
-
-    <h3>🎂 Cakes</h3>
-    <p>• Cubano • Tres Leches • Chocolate • Capuchino</p>
-    <p>Rellenos: Nutella, Guayaba, Dulce de Leche, Coco, Ganache</p>
-    <p>Desde: $45</p>
-
-    <h3>🍪 Dulces</h3>
-    <p>Tartaletas $2 | Marquesitas $3 | Cupcakes $2.5</p>
-    <p>Pastelitos $1.5 | Panetelas $2.5 | Señoritas $3</p>
-    <p>Suspiros 2x$5 | Vasitos $1.8 | Cabezas $2.5</p>
-
-    <h3>🥪 Salados</h3>
-    <p>Croquetas (24) $18 | Pancitos $20</p>
-    <p>Ensalada Fría $3 | Pasta $15</p>
-
-    <h3>🎁 Cajitas</h3>
-    <p>$10 c/u (mínimo 10)</p>
-
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 Antojos Havaneros</p>
-  <p>Pedidos: (908) 768-0702</p>
-</footer>
-
+  <footer class="wrap">
+    © 2026 Antojos Habaneros
+  </footer>
 </body>
 </html>
