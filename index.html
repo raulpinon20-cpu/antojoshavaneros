@@ -1,187 +1,442 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Antojos Havaneros</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Antojos Havaneros</title>
 
-<link rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Iconos (logos de apps) -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
+  <style>
+    :root{
+      --blue:#002A8F;
+      --red:#CB1515;
+      --ink:#0f172a;
+      --card:#ffffff;
+      --line:rgba(15,23,42,.08);
+      --shadow: 0 10px 30px rgba(2,6,23,.10);
+      --radius:18px;
+      --max:980px;
+    }
 
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#f2f2f2;
-  color:#222;
-  text-align:center;
-}
+    /* Fondo tipo mármol (sin imagen) */
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 10% 10%, rgba(0,42,143,.06), transparent 60%),
+        radial-gradient(900px 700px at 90% 20%, rgba(203,21,21,.05), transparent 55%),
+        radial-gradient(700px 600px at 30% 80%, rgba(2,6,23,.06), transparent 55%),
+        linear-gradient(0deg, #f7f7f8, #fbfbfc);
+    }
+    /* “Vetas” suaves */
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.22;
+      background:
+        repeating-linear-gradient(
+          115deg,
+          rgba(2,6,23,.08) 0px,
+          rgba(2,6,23,.08) 1px,
+          transparent 1px,
+          transparent 38px
+        ),
+        repeating-linear-gradient(
+          25deg,
+          rgba(2,6,23,.05) 0px,
+          rgba(2,6,23,.05) 1px,
+          transparent 1px,
+          transparent 56px
+        );
+      mix-blend-mode:multiply;
+      filter: blur(0.2px);
+    }
 
-/* Titulo */
-h1{
-  background:#0b4fa2;
-  color:white;
-  padding:20px;
-  margin:0;
-}
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:18px 14px 60px;
+      position:relative;
+    }
 
-/* Redes */
-.social{
-  background:white;
-  margin:15px;
-  border-radius:12px;
-  box-shadow:0 0 8px #ccc;
-}
+    /* Tipos de marca (ponlas si quieres con archivos) */
+    @font-face{
+      font-family:"VictorianBritania";
+      src: url("fonts/VictorianBritania.woff2") format("woff2");
+      font-display: swap;
+    }
+    @font-face{
+      font-family:"MalibuSunset";
+      src: url("fonts/MalibuSunset.woff2") format("woff2");
+      font-display: swap;
+    }
+    .title-font{ font-family:"VictorianBritania", Georgia, "Times New Roman", serif; }
+    .script-font{ font-family:"MalibuSunset", "Brush Script MT", cursive; }
 
-.social a{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  justify-content:center;
-  padding:15px;
-  font-size:18px;
-  color:#222;
-  text-decoration:none;
-  border-bottom:1px solid #eee;
-}
+    /* Header */
+    header{
+      background:var(--blue);
+      border-radius:22px;
+      box-shadow:var(--shadow);
+      padding:22px 16px;
+      margin:8px 0 18px;
+      text-align:center;
+      position:sticky;
+      top:10px;
+      z-index:5;
+      border:1px solid rgba(255,255,255,.12);
+    }
+    header h1{
+      margin:0;
+      color:#fff;
+      letter-spacing:.5px;
+      font-size: clamp(34px, 6vw, 54px);
+      line-height:1.05;
+      text-shadow: 0 2px 0 rgba(0,0,0,.12);
+    }
 
-.social a:last-child{
-  border:none;
-}
+    /* Tarjeta de links */
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:14px;
+    }
+    .links{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-bottom:18px;
+    }
+    .link{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:14px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#fff,#fbfbff);
+      text-decoration:none;
+      color:var(--ink);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .link:active{ transform: scale(.99); }
+    .link i{
+      font-size:22px;
+      width:28px;
+      text-align:center;
+    }
+    .link .label{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .link .label b{
+      font-size:16px;
+      font-weight:800;
+    }
+    .link .label span{
+      opacity:.8;
+      font-size:13px;
+      margin-top:4px;
+    }
+    .wa i{ color:#25D366; }
+    .ig i{ color:var(--red); }
+    .tt i{ color:#111; }
 
-.social i{
-  font-size:24px;
-}
+    /* Secciones */
+    .section{
+      margin-top:18px;
+    }
+    .section h2{
+      margin:0 0 10px;
+      font-size:30px;
+      color:var(--blue);
+      text-align:center;
+    }
+    .section .sub{
+      margin:-6px 0 14px;
+      text-align:center;
+      font-size:13px;
+      opacity:.75;
+    }
 
-/* Secciones */
-.section{
-  background:white;
-  margin:15px;
-  border-radius:12px;
-  padding:15px;
-  box-shadow:0 0 8px #ccc;
-}
+    /* Carrusel */
+    .carousel{
+      position:relative;
+      background:rgba(255,255,255,.75);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      padding:12px;
+      overflow:hidden;
+    }
+    .track{
+      display:flex;
+      gap:12px;
+      overflow:auto;
+      scroll-snap-type:x mandatory;
+      scroll-behavior:smooth;
+      padding:6px 40px 14px;
+    }
+    .track::-webkit-scrollbar{ height:10px; }
+    .track::-webkit-scrollbar-thumb{ background:rgba(2,6,23,.15); border-radius:999px; }
+    .slide{
+      flex:0 0 85%;
+      scroll-snap-align:center;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: 0 10px 24px rgba(2,6,23,.10);
+    }
+    @media (min-width:720px){
+      .slide{ flex-basis: 55%; }
+    }
+    .slide img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
 
-.section h2{
-  margin-top:0;
-  color:#0b4fa2;
-}
+    .navBtn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.92);
+      box-shadow: 0 10px 24px rgba(2,6,23,.12);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      z-index:2;
+    }
+    .navBtn i{ font-size:18px; color:var(--blue); }
+    .prev{ left:10px; }
+    .next{ right:10px; }
 
-/* Carrusel */
-.carousel{
-  position:relative;
-}
+    .dots{
+      display:flex;
+      justify-content:center;
+      gap:7px;
+      padding:10px 0 2px;
+    }
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:rgba(2,6,23,.20);
+      border:1px solid rgba(2,6,23,.10);
+    }
+    .dot.active{
+      background:var(--red);
+      border-color: rgba(203,21,21,.35);
+      transform:scale(1.15);
+    }
 
-.carousel img{
-  width:100%;
-  display:none;
-  border-radius:10px;
-}
+    /* Menú */
+    .menuGrid{
+      display:grid;
+      gap:14px;
+    }
+    .menuItem{
+      background:rgba(255,255,255,.85);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .menuItem img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
 
-.carousel img.active{
-  display:block;
-}
-
-/* Menu */
-.menu img{
-  width:100%;
-  margin-bottom:15px;
-  border-radius:10px;
-}
-
-/* Telefono */
-.phone{
-  background:#0b4fa2;
-  color:white;
-  padding:20px;
-  font-size:22px;
-  font-weight:bold;
-  margin-top:20px;
-}
-
-</style>
+    /* Pie */
+    footer{
+      margin-top:24px;
+      text-align:center;
+      font-size:12px;
+      opacity:.7;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="wrap">
 
-<h1>Antojos Havaneros</h1>
+    <!-- HEADER -->
+    <header>
+      <h1 class="title-font">Antojos Havaneros</h1>
+    </header>
 
-<!-- Redes -->
-<div class="social">
+    <!-- LINKS -->
+    <div class="card links">
+      <a class="link wa" href="https://wa.me/19087680702" target="_blank" rel="noopener">
+        <i class="fa-brands fa-whatsapp"></i>
+        <div class="label">
+          <b>WhatsApp</b>
+          <span>908-768-0702</span>
+        </div>
+      </a>
 
-  <a href="https://wa.me/19087680702">
-    <i class="fab fa-whatsapp"></i> WhatsApp: 908-768-0702
-  </a>
+      <a class="link ig" href="https://www.instagram.com/antojos_havaneros/" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram"></i>
+        <div class="label">
+          <b>Instagram</b>
+          <span>@antojos_havaneros</span>
+        </div>
+      </a>
 
-  <a href="https://www.instagram.com/antojoshavaneros">
-    <i class="fab fa-instagram"></i> Instagram
-  </a>
+      <a class="link tt" href="https://www.tiktok.com/@antojos_havaneros" target="_blank" rel="noopener">
+        <i class="fa-brands fa-tiktok"></i>
+        <div class="label">
+          <b>TikTok</b>
+          <span>@antojos_havaneros</span>
+        </div>
+      </a>
+    </div>
 
-  <a href="https://www.tiktok.com/@antojoshavaneros">
-    <i class="fab fa-tiktok"></i> TikTok
-  </a>
+    <!-- CAKES (Carrusel) -->
+    <section class="section">
+      <h2 class="title-font">Cakes</h2>
+      <div class="sub">Desliza o usa las flechas</div>
 
-</div>
+      <div class="carousel" id="cakeCarousel">
+        <button class="navBtn prev" type="button" aria-label="Anterior">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
 
-<!-- Cakes -->
-<div class="section">
+        <div class="track" id="cakeTrack">
+          <!-- Tus fotos reales -->
+          <div class="slide"><img src="cake-01.jpg" alt="Cake 1"></div>
+          <div class="slide"><img src="cake-02.jpg" alt="Cake 2"></div>
+          <div class="slide"><img src="cake-03.jpg" alt="Cake 3"></div>
+          <div class="slide"><img src="cake-04.jpg" alt="Cake 4"></div>
+          <div class="slide"><img src="cake-05.jpg" alt="Cake 5"></div>
+          <div class="slide"><img src="cake-06.jpg" alt="Cake 6"></div>
+          <div class="slide"><img src="cake-07.jpg" alt="Cake 7"></div>
+          <div class="slide"><img src="cake-08.jpg" alt="Cake 8"></div>
+          <div class="slide"><img src="cake-09.jpg" alt="Cake 9"></div>
+          <div class="slide"><img src="cake-10.jpg" alt="Cake 10"></div>
+        </div>
 
-<h2>Cakes</h2>
+        <button class="navBtn next" type="button" aria-label="Siguiente">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
 
-<div class="carousel">
-  <img src="cake-01.jpg" class="active">
-  <img src="cake-02.jpg">
-  <img src="cake-03.jpg">
-  <img src="cake-04.jpg">
-  <img src="cake-05.jpg">
-  <img src="cake-06.jpg">
-  <img src="cake-07.jpg">
-  <img src="cake-08.jpg">
-  <img src="cake-09.jpg">
-  <img src="cake-10.jpg">
-</div>
+        <div class="dots" id="cakeDots"></div>
+      </div>
+    </section>
 
-</div>
+    <!-- MENÚ (Imágenes en orden) -->
+    <section class="section">
+      <h2 class="title-font" style="color: var(--red);">Menú</h2>
+      <div class="sub">Imágenes en orden</div>
 
-<!-- Menu -->
-<div class="section">
+      <div class="menuGrid">
+        <div class="menuItem"><img src="page-01.webp" alt="Menú página 1"></div>
+        <div class="menuItem"><img src="page-02.webp" alt="Menú página 2"></div>
+        <div class="menuItem"><img src="page-03.webp" alt="Menú página 3"></div>
+        <div class="menuItem"><img src="page-04.webp" alt="Menú página 4"></div>
+        <div class="menuItem"><img src="page-05.webp" alt="Menú página 5"></div>
+        <div class="menuItem"><img src="page-06.webp" alt="Menú página 6"></div>
+        <div class="menuItem"><img src="page-07.webp" alt="Menú página 7"></div>
+        <div class="menuItem"><img src="page-08.webp" alt="Menú página 8"></div>
+        <div class="menuItem"><img src="page-09.webp" alt="Menú página 9"></div>
+        <div class="menuItem"><img src="page-10.webp" alt="Menú página 10"></div>
+      </div>
+    </section>
 
-<h2>Menú</h2>
+    <footer>
+      © <span id="year"></span> Antojos Havaneros
+    </footer>
 
-<div class="menu">
-  <img src="page-01.webp">
-  <img src="page-02.webp">  
-  <img src="page-03.webp">
-  <img src="page-04.webp">
-  <img src="page-05.webp">
-  <img src="page-06.webp">
-  <img src="page-07.webp">
-  <img src="page-08.webp">
-  <img src="page-09.webp">
-</div>
+  </div>
 
-</div>
+  <script>
+    // Año
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<!-- Telefono -->
-<div class="phone">
-📞 908-768-0702
-</div>
+    // Carrusel con dots + flechas
+    (function(){
+      const track = document.getElementById("cakeTrack");
+      const slides = Array.from(track.querySelectorAll(".slide"));
+      const dotsWrap = document.getElementById("cakeDots");
+      const prevBtn = document.querySelector("#cakeCarousel .prev");
+      const nextBtn = document.querySelector("#cakeCarousel .next");
 
-<script>
+      // Crear dots
+      const dots = slides.map((_, i) => {
+        const d = document.createElement("div");
+        d.className = "dot" + (i === 0 ? " active" : "");
+        d.addEventListener("click", () => scrollToSlide(i));
+        dotsWrap.appendChild(d);
+        return d;
+      });
 
-let i = 0;
-const imgs = document.querySelectorAll('.carousel img');
+      function getSlideWidth(){
+        const s = slides[0];
+        const style = getComputedStyle(track);
+        const gap = parseFloat(style.columnGap || style.gap || "12");
+        return s.getBoundingClientRect().width + gap;
+      }
 
-setInterval(()=>{
+      function scrollToSlide(i){
+        track.scrollTo({ left: i * getSlideWidth(), behavior: "smooth" });
+      }
 
-  imgs[i].classList.remove('active');
-  i = (i+1) % imgs.length;
-  imgs[i].classList.add('active');
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -getSlideWidth(), behavior: "smooth" });
+      });
 
-},3000);
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: getSlideWidth(), behavior: "smooth" });
+      });
 
-</script>
+      // Activar dot según el centro visible
+      function updateDots(){
+        const center = track.scrollLeft + track.clientWidth / 2;
+        let best = 0, bestDist = Infinity;
 
+        slides.forEach((slide, i) => {
+          const left = slide.offsetLeft;
+          const w = slide.getBoundingClientRect().width;
+          const c = left + w/2;
+          const dist = Math.abs(c - center);
+          if(dist < bestDist){ bestDist = dist; best = i; }
+        });
+
+        dots.forEach((d,i)=> d.classList.toggle("active", i === best));
+      }
+
+      track.addEventListener("scroll", () => {
+        window.requestAnimationFrame(updateDots);
+      });
+
+      // Si falta alguna imagen, que no rompa todo
+      document.querySelectorAll("img").forEach(img=>{
+        img.addEventListener("error", ()=>{
+          img.style.display = "none";
+          const p = document.createElement("div");
+          p.style.padding = "18px";
+          p.style.textAlign = "center";
+          p.style.opacity = ".7";
+          p.textContent = "No se encontró: " + img.getAttribute("src");
+          img.parentElement.appendChild(p);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
