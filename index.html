@@ -50,6 +50,13 @@
       height: 28px;
     }
 
+    /* SOLO para el SVG de TikTok (mismo tamaño que img) */
+    .contact-item svg {
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+    }
+
     /* TITULOS */
     h2 {
       text-align: center;
@@ -116,7 +123,10 @@
     </a>
 
     <a class="contact-item" href="https://www.tiktok.com/@antojoshavaneros?_r=1&_t=ZT-93g3vJgVixC" target="_blank">
-      <img src="https://www.svgrepo.com/download/303145/tiktok-icon-2-logo.svg">
+      <!-- ICONO TIKTOK EMBEBIDO (NO SE ROMPE) -->
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#000000" d="M16.5 3c.6 2.9 2.6 4.8 5.5 4.9V11c-2-.1-3.8-.7-5.5-1.9v6.4c0 3.7-3 6.5-6.7 6.5S3 19.2 3 15.6c0-3.6 3-6.5 6.7-6.5.4 0 .8 0 1.2.1v3.7c-.4-.2-.8-.3-1.2-.3-1.5 0-2.7 1.2-2.7 2.9 0 1.7 1.2 2.9 2.7 2.9 1.7 0 2.8-1 2.8-3.3V3h3z"/>
+      </svg>
       TikTok: @antojoshavaneros
     </a>
 
