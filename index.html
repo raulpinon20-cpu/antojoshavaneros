@@ -92,14 +92,9 @@ h2{
   margin:10px;
 }
 
+/* ✅ OCULTA EL BOTÓN PERO NO QUITA LA FUNCIÓN */
 .controls button{
-  padding:8px 15px;
-  border:none;
-  background:#002A8F;
-  color:white;
-  border-radius:8px;
-  cursor:pointer;
-  margin:0 5px;
+  display:none;
 }
 
 /* ZOOM */
@@ -235,7 +230,11 @@ function load(id,prefix){
 
     if(i===1) img.classList.add("active");
 
-    img.onclick = ()=>openModal(img.src);
+    /* ✅ TOCAR LA IMAGEN: PAUSA/SEGUIR + AGRANDAR */
+    img.onclick = ()=>{
+      toggle(id);
+      openModal(img.src);
+    };
 
     box.appendChild(img);
   }
