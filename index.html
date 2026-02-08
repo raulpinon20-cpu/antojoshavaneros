@@ -65,21 +65,20 @@ h2{
   margin-bottom:10px;
 }
 
-/* ✅ CARRUSEL GRANDE (7x5 REAL) */
+/* ✅ CARRUSEL MISMO TAMAÑO/ESTILO QUE MENU (VERTICAL GRANDE) */
 .carousel{
   position:relative;
-  margin:auto;
+  width:90%;              /* igual que menú */
+  margin:20px auto;       /* igual que menú */
   overflow:hidden;
-  border-radius:20px;
+  border-radius:15px;     /* igual que menú */
   background:white;
   box-shadow:0 2px 6px rgba(0,0,0,0.1);
 
-  width:96%;
-  aspect-ratio: 7 / 5;     /* 7x5 exacto */
-  max-height: 70vh;        /* MÁS GRANDE en móvil */
+  aspect-ratio: 3 / 4;    /* VERTICAL tipo menú */
+  max-height: 80vh;       /* grande en móvil */
 }
 
-/* imágenes llenan el contenedor */
 .carousel img{
   width:100%;
   height:100%;
