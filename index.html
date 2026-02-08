@@ -6,7 +6,6 @@
 <title>Antojos Havaneros</title>
 
 <style>
-
 body{
   margin:0;
   font-family: Georgia, serif;
@@ -75,13 +74,11 @@ h2{
   background:white;
   box-shadow:0 2px 6px rgba(0,0,0,0.1);
 
-  /* ✅ EVITA LOS SALTOS */
-  height:260px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  /* ✅ EVITA LOS “SALTOS” (altura fija para que no cambie el layout) */
+  height: 380px;
 }
 
+/* ✅ Las imágenes ocupan toda el área sin achicarse raro */
 .carousel img{
   width:100%;
   height:100%;
@@ -94,13 +91,11 @@ h2{
   display:block;
 }
 
-/* BOTONES */
+/* BOTONES (OCULTOS) */
 .controls{
   text-align:center;
   margin:10px;
 }
-
-/* OCULTA BOTÓN */
 .controls button{
   display:none;
 }
@@ -136,100 +131,93 @@ h2{
   border-radius:15px;
   box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
-
 </style>
 </head>
 
 <body>
 
 <!-- HEADER -->
-<header>
-Antojos Havaneros
-</header>
+<header>Antojos Havaneros</header>
 
 <!-- CONTACTOS -->
 <div class="contact-box">
 
-<a class="contact-item" href="https://wa.me/19087680702" target="_blank">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
-WhatsApp: 908-768-0702
-</a>
+  <a class="contact-item" href="https://wa.me/19087680702" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    WhatsApp: 908-768-0702
+  </a>
 
-<a class="contact-item" href="https://instagram.com/antojos_havaneros" target="_blank">
-<img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png">
-Instagram: @antojos_havaneros
-</a>
+  <a class="contact-item" href="https://instagram.com/antojos_havaneros" target="_blank" rel="noopener">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+    Instagram: @antojos_havaneros
+  </a>
 
-<a class="contact-item" href="https://www.tiktok.com/@antojoshavaneros?_r=1&_t=ZT-93g3vJgVixC" target="_blank">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.svg">
-TikTok: @antojoshavaneros
-</a>
+  <a class="contact-item" href="https://www.tiktok.com/@antojoshavaneros?_r=1&_t=ZT-93g3vJgVixC" target="_blank" rel="noopener">
+    <!-- ✅ ICONO TIKTOK FIJO (NO SE DESAPARECE EN MÓVIL) -->
+    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok">
+    TikTok: @antojoshavaneros
+  </a>
 
 </div>
 
 <!-- CAKES -->
 <h2>Cakes</h2>
 <div class="subtitle">Desliza o pausa</div>
-
 <div class="carousel" id="cakes"></div>
+<div class="controls"><button onclick="toggle('cakes')">Pausar / Seguir</button></div>
 
 <!-- DULCES -->
 <h2>Dulces</h2>
 <div class="subtitle">Desliza o pausa</div>
-
-<div class="carousel" id="dulce"></div>
+<div class="carousel" id="dulces"></div>
+<div class="controls"><button onclick="toggle('dulces')">Pausar / Seguir</button></div>
 
 <!-- SALADOS -->
 <h2>Salados</h2>
 <div class="subtitle">Desliza o pausa</div>
-
-<div class="carousel" id="salado"></div>
+<div class="carousel" id="salados"></div>
+<div class="controls"><button onclick="toggle('salados')">Pausar / Seguir</button></div>
 
 <!-- MENU -->
 <h2>Menú</h2>
-
 <div class="menu">
-<img src="page-01.webp">
-<img src="page-02.webp">
-<img src="page-03.webp">
-<img src="page-04.webp">
-<img src="page-05.webp">
-<img src="page-06.webp">
-<img src="page-07.webp">
-<img src="page-08.webp">
-<img src="page-09.webp">
-<img src="page-10.webp">
+  <img src="page-01.webp" alt="Menú 1">
+  <img src="page-02.webp" alt="Menú 2">
+  <img src="page-03.webp" alt="Menú 3">
+  <img src="page-04.webp" alt="Menú 4">
+  <img src="page-05.webp" alt="Menú 5">
+  <img src="page-06.webp" alt="Menú 6">
+  <img src="page-07.webp" alt="Menú 7">
+  <img src="page-08.webp" alt="Menú 8">
+  <img src="page-09.webp" alt="Menú 9">
+  <img src="page-10.webp" alt="Menú 10">
 </div>
 
 <!-- MODAL -->
 <div class="modal" id="modal" onclick="closeModal()">
-<img id="modalImg">
+  <img id="modalImg" alt="Zoom">
 </div>
 
 <script>
-
 /* CONFIG */
 const carousels = {
-  cakes:{total:20,index:0,play:true},
-  dulce:{total:16,index:0,play:true},
-  salado:{total:7,index:0,play:true}
+  cakes:   { total: 20, index: 0, play: true, prefix: "cake"   },
+  dulces:  { total: 16, index: 0, play: true, prefix: "dulce"  },
+  salados: { total:  7, index: 0, play: true, prefix: "salado" }
 };
 
 /* CARGAR IMAGENES */
-function load(id,prefix){
-
+function load(id){
   const box = document.getElementById(id);
 
   for(let i=1;i<=carousels[id].total;i++){
-
-    let num = i.toString().padStart(2,"0");
-
-    let img = document.createElement("img");
-    img.src = prefix+"-"+num+".jpg";
-
+    const num = i.toString().padStart(2,"0");
+    const img = document.createElement("img");
+    img.src = carousels[id].prefix + "-" + num + ".jpg";
     if(i===1) img.classList.add("active");
 
-    img.onclick = ()=>{
+    /* ✅ TOCAR: PAUSA/SEGUIR + AGRANDAR */
+    img.onclick = () => {
       toggle(id);
       openModal(img.src);
     };
@@ -238,28 +226,23 @@ function load(id,prefix){
   }
 }
 
-load("cakes","cake");
-load("dulce","dulce");
-load("salado","salado");
+load("cakes");
+load("dulces");
+load("salados");
 
 /* AUTO */
-setInterval(()=>{
-
-  for(let id in carousels){
-
+setInterval(() => {
+  for(const id in carousels){
     if(!carousels[id].play) continue;
 
-    let imgs = document.querySelectorAll("#"+id+" img");
-
+    const imgs = document.querySelectorAll("#"+id+" img");
     imgs[carousels[id].index].classList.remove("active");
 
-    carousels[id].index =
-    (carousels[id].index+1)%imgs.length;
+    carousels[id].index = (carousels[id].index + 1) % imgs.length;
 
     imgs[carousels[id].index].classList.add("active");
   }
-
-},2000);
+}, 2000);
 
 /* PAUSA */
 function toggle(id){
@@ -275,8 +258,7 @@ function openModal(src){
 function closeModal(){
   document.getElementById("modal").classList.remove("active");
 }
-
 </script>
 
 </body>
-</html>
+</html> 
